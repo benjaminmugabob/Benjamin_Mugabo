@@ -1,0 +1,72 @@
+# Replace the text below to customize your site
+site_name: Benjamin Mugabo
+site_description: Benjamin Mugabo Fabricademy site
+site_author: Benjamin Mugabo
+copyright: Copyright 2025 Benjamin Mugabo - Creactive Commons Attribution Non-commercial
+
+site_url: https://r-inyuru.github.io/ModelingFabricationTechnique
+repo_url: https://github.com/R-INYURU/
+repo_name: UR-ACEIoT Documentation site
+
+extra:
+  social:
+    # Change to your own social media or remove line to hide. 
+    # For more social icons ideas at https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#social-links
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/fablab_rwanda
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/KigaliFabLab
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/fablabrw
+
+theme:
+  # The name of the theme, needs to match your requirements.txt file
+  name: material
+  # Material theme options:
+  palette:
+    # try other colors from https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
+    primary: teal
+    accent: deep purple
+  font:
+    # See available fonts from https://fonts.google.com/
+    text: Montserrat
+    code: Roboto Mono
+  icon:
+    # Read about icons at https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/
+    logo: material/library
+    repo: material/gitlab
+  features:
+    - navigation.tabs
+    - navigation.footer
+
+# Read more here https://squidfunk.github.io/mkdocs-material/customization/#additional-css 
+# extra_css:
+#   - stylesheets/extra.css
+
+# extra_javascript:
+#   - 'javascript/extra.js'
+
+plugins:
+  - search
+  - glightbox:
+  # - git-revision-date:
+      enabled_if_env: CI
+
+# See more extensions at https://squidfunk.github.io/mkdocs-material/reference/
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+  - pymdownx.details
+  # https://squidfunk.github.io/mkdocs-material/reference/content-tabs/
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.superfences
+  - tables
+  - footnotes
+  - attr_list
+  - md_in_html
+  - meta
