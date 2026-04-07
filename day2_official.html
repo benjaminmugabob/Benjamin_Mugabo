@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 – Digital Modeling for Fabrication - FabLab Rwanda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .day-page-container {
+            padding-top: 80px;
+            min-height: 100vh;
+            background: var(--bg-light);
+        }
+
+        .day-page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .day-page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .day-page-header .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .day-page-header .back-link:hover {
+            color: white;
+        }
+
+        .pdf-container {
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 900px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .pdf-download {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-download:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .activities-section {
+            margin-top: 3rem;
+        }
+
+        .activities-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .activity-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .activity-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .activity-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-section h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .activity-section p,
+        .activity-section li {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .activity-section ul li {
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .activity-section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .activity-section strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .activity-highlight {
+            background: rgba(0, 168, 89, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .activity-highlight p {
+            margin: 0;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .activity-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin: 1.5rem 0;
+            border: 2px solid var(--border-color);
+        }
+
+        .activity-image-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .activity-image-caption {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-viewer {
+                height: 600px;
+            }
+
+            .day-page-header h1 {
+                font-size: 2rem;
+            }
+
+            .activities-title {
+                font-size: 1.75rem;
+            }
+
+            .activity-card {
+                padding: 1.5rem;
+            }
+
+            .activity-title {
+                font-size: 1.5rem;
+            }
+
+            .activity-section h4 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">FabLab Rwanda</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#outcomes">Outcomes</a></li>
+                <li><a href="index.html#prerequisites">Prerequisites</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-page-container">
+        <div class="day-page-header">
+            <div class="container">
+                <a href="index.html#topics" class="back-link">
+                    ← Back to Course Topics
+                </a>
+                <h1>Day 2 – Digital Modeling for Fabrication</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="pdf-container">
+                <iframe 
+                    src="Course_presentation/Day2_Digital_Modeling_for_Fabrication.pdf" 
+                    class="pdf-viewer"
+                    title="Day 2 - Digital Modeling for Fabrication PDF">
+                </iframe>
+                <div style="margin-top: 1rem;">
+                    <a href="Course_presentation/Day2_Digital_Modeling_for_Fabrication.pdf" 
+                       download 
+                       class="pdf-download">
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+
+            <div class="activities-section">
+                <div class="container">
+                    <h2 class="activities-title">After Class Activities</h2>
+
+                    <div class="activity-card">
+                        <span class="activity-number">Activity 1</span>
+                        <h3 class="activity-title">FreeCAD Model</h3>
+                        <p class="activity-subtitle">L-Shaped Mounting Bracket (3D)</p>
+
+                        <div class="activity-section">
+                            <h4>What students should recognize from the images:</h4>
+                            <ul>
+                                <li>An L-shaped solid part</li>
+                                <li>Two flat faces at 90°</li>
+                                <li>Two round holes for screws/bolts</li>
+                                <li>Simple geometry (no complex curves)</li>
+                                <li>Clean edges with one rounded (filleted) corner</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-image-container">
+                            <img src="images/day2_activity1_l_bracket.png" alt="L-Shaped Mounting Bracket 3D Model" class="activity-image">
+                            <p class="activity-image-caption">Example: L-Shaped Mounting Bracket (3D Model)</p>
+                        </div>
+
+                        <div class="activity-highlight">
+                            <p>👉 This is the exact type of object they will recreate in FreeCAD, using:</p>
+                        </div>
+
+                        <div class="activity-section">
+                            <ul>
+                                <li><strong>Sketch</strong> → Create the 2D profile</li>
+                                <li><strong>Pad</strong> → Extrude to create 3D volume</li>
+                                <li><strong>Hole</strong> → Create the two round holes</li>
+                                <li><strong>Fillet</strong> → Round the corner</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <span class="activity-number">Activity 2</span>
+                        <h3 class="activity-title">Inkscape Model</h3>
+                        <p class="activity-subtitle">Press-Fit Box Panel (2D Vector)</p>
+
+                        <div class="activity-section">
+                            <h4>What students should recognize from the images:</h4>
+                            <ul>
+                                <li>A flat rectangular panel</li>
+                                <li>Rectangular slots cut into the edges</li>
+                                <li>Slots sized to match material thickness</li>
+                                <li>Designed to slide and lock with other panels</li>
+                                <li>Entirely 2D vector geometry</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-image-container">
+                            <img src="images/day2_activity2_pressfit_box.png" alt="Press-Fit Box Panel 2D Vector Design" class="activity-image">
+                            <p class="activity-image-caption">Example: Press-Fit Box Panel (2D Vector Design)</p>
+                        </div>
+
+                        <div class="activity-highlight">
+                            <p>👉 This is the exact style of design they will create in Inkscape, focusing on:</p>
+                        </div>
+
+                        <div class="activity-section">
+                            <ul>
+                                <li><strong>1:1 scale</strong> – Accurate real-world dimensions</li>
+                                <li><strong>Clean paths</strong> – Precise vector geometry</li>
+                                <li><strong>Slot accuracy</strong> – Proper sizing for press-fit assembly</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FabLab Rwanda</h3>
+                    <p>Fabrication Laboratory</p>
+                    <p class="footer-subtitle">Empowering Innovation Through Digital Fabrication</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@fablab.rw</p>
+                    <p>Phone: +250 788 XXX XXX</p>
+                    <p>Location: Kigali, Rwanda</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Partner Institution</h3>
+                    <p><strong>UR-ACEIoT</strong></p>
+                    <p>Advanced Centre for Internet of Things</p>
+                    <p>University of Rwanda</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FabLab Rwanda. All rights reserved. | Course offered in partnership with UR-ACEIoT</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

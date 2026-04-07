@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 – Foundations of Modeling & Fabrication - FabLab Rwanda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .day-page-container {
+            padding-top: 80px;
+            min-height: 100vh;
+            background: var(--bg-light);
+        }
+
+        .day-page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .day-page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .day-page-header .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .day-page-header .back-link:hover {
+            color: white;
+        }
+
+        .pdf-container {
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 900px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .pdf-download {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-download:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .activities-section {
+            margin-top: 3rem;
+        }
+
+        .activities-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .activity-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .activity-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .activity-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-section h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .activity-section p,
+        .activity-section li {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .activity-section ul li {
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .activity-section ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .activity-section strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-viewer {
+                height: 600px;
+            }
+
+            .day-page-header h1 {
+                font-size: 2rem;
+            }
+
+            .activities-title {
+                font-size: 1.75rem;
+            }
+
+            .activity-card {
+                padding: 1.5rem;
+            }
+
+            .activity-title {
+                font-size: 1.5rem;
+            }
+
+            .activity-section h4 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">FabLab Rwanda</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#topics">Topics</a></li>
+                <li><a href="index.html#outcomes">Outcomes</a></li>
+                <li><a href="index.html#prerequisites">Prerequisites</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="day-page-container">
+        <div class="day-page-header">
+            <div class="container">
+                <a href="index.html#topics" class="back-link">
+                    ← Back to Course Topics
+                </a>
+                <h1>Day 1 – Foundations of Modeling & Fabrication</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="pdf-container">
+                <iframe 
+                    src="Course_presentation/Day1_Foundations_of_modeling_n_fabrication.pdf" 
+                    class="pdf-viewer"
+                    title="Day 1 - Foundations of Modeling & Fabrication PDF">
+                </iframe>
+                <div style="margin-top: 1rem;">
+                    <a href="Course_presentation/Day1_Foundations_of_modeling_n_fabrication.pdf" 
+                       download 
+                       class="pdf-download">
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+
+            <div class="activities-section">
+                <div class="container">
+                    <h2 class="activities-title">After Class Activities</h2>
+
+                    <div class="activity-card">
+                        <span class="activity-number">Activity 1</span>
+                        <h3 class="activity-title">Building a Documentation Website with MkDocs Material</h3>
+                        <p class="activity-subtitle">Documenting Design & Fabrication Processes</p>
+
+                        <div class="activity-section">
+                            <h4>Objective</h4>
+                            <p>Enable students to document modeling and fabrication work professionally using a static documentation website.</p>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Task Description</h4>
+                            <p>Students must create a documentation website using MkDocs with the Material theme to document their digital modeling and fabrication learning process.</p>
+                            <p>The website should document:</p>
+                            <ul>
+                                <li>Course understanding</li>
+                                <li>Design decisions</li>
+                                <li>Modeling workflow</li>
+                                <li>Fabrication considerations</li>
+                                <li>Reflections and outcomes</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Required Pages</h4>
+                            <p>At minimum, the site must include:</p>
+                            <ul>
+                                <li><strong>Home</strong> – course overview & student introduction</li>
+                                <li><strong>Digital Modeling</strong> – modeling approach, screenshots, files</li>
+                                <li><strong>Fabrication Logic</strong> – machines, materials, constraints</li>
+                                <li><strong>Prototyping & Iteration</strong> – tests, failures, improvements</li>
+                                <li><strong>Reflection</strong> – lessons learned & critical analysis</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Technical Requirements</h4>
+                            <ul>
+                                <li>MkDocs Material theme</li>
+                                <li>Markdown-based content</li>
+                                <li>Images, diagrams, and captions</li>
+                                <li>Clear navigation structure</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Deliverables</h4>
+                            <ul>
+                                <li>Local MkDocs project folder</li>
+                                <li>Live preview of the documentation site</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Learning Outcome</h4>
+                            <p>Students learn that documentation is part of the design process, not an afterthought.</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <span class="activity-number">Activity 2</span>
+                        <h3 class="activity-title">Publishing Documentation via GitHub Pages</h3>
+                        <p class="activity-subtitle">From Local Project to Public Knowledge</p>
+
+                        <div class="activity-section">
+                            <h4>Objective</h4>
+                            <p>Teach students how to publish and share technical documentation using GitHub and GitHub Pages.</p>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Task Description</h4>
+                            <p>Students must upload their MkDocs documentation project to their GitHub account and publish it as a GitHub Pages website.</p>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Steps Students Must Complete</h4>
+                            <ul>
+                                <li>Create a GitHub repository for the documentation</li>
+                                <li>Push the MkDocs project files to GitHub</li>
+                                <li>Configure:
+                                    <ul>
+                                        <li>Repository structure</li>
+                                        <li>GitHub Pages settings</li>
+                                    </ul>
+                                </li>
+                                <li>Deploy the site so it is accessible via a public URL</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Submission Requirements</h4>
+                            <ul>
+                                <li>GitHub repository link</li>
+                                <li>Live GitHub Pages URL</li>
+                                <li>Screenshot of deployed website</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Learning Outcome</h4>
+                            <p>Students gain skills in version control, open documentation, and reproducible workflows.</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card">
+                        <span class="activity-number">Activity 3</span>
+                        <h3 class="activity-title">Documentation Quality & Peer Review</h3>
+                        <p class="activity-subtitle">Evaluating Clarity, Reproducibility & Design Thinking</p>
+
+                        <div class="activity-section">
+                            <h4>Objective</h4>
+                            <p>Develop critical evaluation skills by reviewing technical documentation quality.</p>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Task Description</h4>
+                            <p>Students perform a peer review of another student's documentation website.</p>
+                            <p>Each student must evaluate:</p>
+                            <ul>
+                                <li>Clarity of explanations</li>
+                                <li>Quality of visuals and diagrams</li>
+                                <li>Logical structure and navigation</li>
+                                <li>Ability to reproduce the work from documentation alone</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Peer Review Criteria</h4>
+                            <ul>
+                                <li>Is the process understandable?</li>
+                                <li>Are modeling decisions justified?</li>
+                                <li>Are fabrication constraints clearly explained?</li>
+                                <li>Is the documentation professional and readable?</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Deliverables</h4>
+                            <ul>
+                                <li>Peer review report (1–2 pages)</li>
+                                <li>Constructive written feedback</li>
+                                <li>Suggested improvements</li>
+                            </ul>
+                        </div>
+
+                        <div class="activity-section">
+                            <h4>Learning Outcome</h4>
+                            <p>Students understand that good documentation enables knowledge transfer and collaboration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FabLab Rwanda</h3>
+                    <p>Fabrication Laboratory</p>
+                    <p class="footer-subtitle">Empowering Innovation Through Digital Fabrication</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: info@fablab.rw</p>
+                    <p>Phone: +250 788 XXX XXX</p>
+                    <p>Location: Kigali, Rwanda</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Partner Institution</h3>
+                    <p><strong>UR-ACEIoT</strong></p>
+                    <p>Advanced Centre for Internet of Things</p>
+                    <p>University of Rwanda</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FabLab Rwanda. All rights reserved. | Course offered in partnership with UR-ACEIoT</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
